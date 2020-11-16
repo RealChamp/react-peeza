@@ -17,7 +17,6 @@ function PizzaBlock({name, imageUrl, price, types, sizes}) {
     setActiveSize(index)
   }
 
-
   return (
       <div className="pizza-block">
         <img
@@ -74,7 +73,7 @@ PizzaBlock.propTypes = {
   imageUrl: PropTypes.string,
   price: PropTypes.number,
   types: PropTypes.arrayOf(PropTypes.number),
-  sizes: PropTypes.arrayOf(PropTypes.number),
+  sizes: PropTypes.arrayOf(PropTypes.number)
 }
 
 PizzaBlock.defaultProps = {
