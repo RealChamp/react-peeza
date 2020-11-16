@@ -17,6 +17,7 @@ function PizzaBlock({name, imageUrl, price, types, sizes}) {
     setActiveSize(index)
   }
 
+
   return (
       <div className="pizza-block">
         <img
@@ -40,7 +41,7 @@ function PizzaBlock({name, imageUrl, price, types, sizes}) {
                 <li key={size}
                     onClick={() => onSelectSize(index)}
                     className={classNames({
-                      active: activeSize === index,
+                      active: activeSize === size,
                       disable: !sizes.includes(size)
                     })}>{size} см.</li>
             ))}
