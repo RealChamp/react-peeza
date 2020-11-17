@@ -7,7 +7,8 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_COMPOSE__ || compose
 const store = createStore(
     reducers,
     composeEnhancer(
-        applyMiddleware(thunk)
+        applyMiddleware(thunk),
+        window.devToolsExtension ? window.devToolsExtension() : f => f
     )
     )
 

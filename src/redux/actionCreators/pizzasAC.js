@@ -1,9 +1,15 @@
-import { SET_PIZZAS } from '../actions/pizzasActions';
+import { SET_PIZZAS, SET_LOADED } from '../actions/pizzasActions';
 import axios from 'axios';
 
-export function fetchPizzas() {
+export const setLoaded = (payload) => ({
+  type: SET_LOADED,
+  payload
+})
+
+export function fetchPizzas(sortBy,category ) {
   return function (dispatch) {
-    axios.get('http://localhost:3001/pizzas').then(({ data }) => {
+    dispatch(setLoaded(false))
+    axios.get(`http://localhost:3001/pizzas?${category !== null ? `category=${category}` : ''}&_sort=${sortBy.type}&_order=${sortBy.order}`).then(({ data }) => {
       dispatch(setPizzas(data));
     });
   };
