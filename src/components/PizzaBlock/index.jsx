@@ -8,19 +8,20 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, 
   const availableSizes = [26, 30, 40];
 
   const [activeType, setActiveType] = useState(types[0]);
-  const [activeSize, setActiveSize] = useState(0);
+  const [activeSize, setActiveSize] = useState(sizes[0]);
 
   const onSelectType = (index) => {
     setActiveType(index);
   };
-  const onSelectSize = (index) => {
-    setActiveSize(index);
+  const onSelectSize = (size) => {
+    setActiveSize(size);
   };
 
   const onAddPizza = () => {
-    const obj = { id, name, imageUrl, price, size: sizes[activeSize], type: types[activeType] };
+    const obj = { id, name, imageUrl, price, size: activeSize, type: availableTypes[activeType] };
     onClickAddPizza(obj);
   };
+
 
   return (
     <div className="pizza-block">
@@ -44,9 +45,9 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, 
           {availableSizes.map((size, index) => (
             <li
               key={size}
-              onClick={() => onSelectSize(index)}
+              onClick={() => onSelectSize(size)}
               className={classNames({
-                active: activeSize === index,
+                active: activeSize === size,
                 disable: !sizes.includes(size),
               })}>
               {size} см.
